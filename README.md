@@ -62,13 +62,13 @@ This system was built primarily as a intensive learning vehicle. While it is hig
 
 Despite its retrospective flaws, **Academy Manager provides an incredibly solid, modular foundation**. 
 
-Because the code is split cleanly into isolated bounded contexts (Attendance, Bills, Courses, Enrollments, Expenses, Income, Inventory, Salaries, Staff, Students, Users), you can easily extract individual modules or use this entire setup as a reliable base stack. It is highly customizable, strictly typed, and ready to be spun up locally in seconds.
+Because the code is split cleanly into isolated bounded contexts, you can easily extract individual modules or use this entire setup as a reliable base stack.
 
 ---
 
 ## 🐳 Quick Start (Local Deployment)
 
-This project is fully dockerized. To spin up the entire backend stack along with its database and network bridges locally, make sure you have Docker installed and run:
+To spin up the entire backend stack along with its database, make sure you have Docker installed and run:
 
 ```bash
 docker-compose up --build
