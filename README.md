@@ -10,28 +10,6 @@ A production-ready, multi-branch educational ERP backend engine built using Java
 
 ---
 
-## 📂 Repository Structure (DDD Bounded Contexts)
-
-The codebase is organized by business capability into bounded contexts, keeping domain logic isolated from external frameworks:
-
-src/main/java/com/AjAkrampoor/Academy/
-├── attendance/          # Student check-ins and session logging
-├── bills/               # Invoicing, student payment processing, batch summaries
-├── branches/            # Multi-branch infrastructure management
-├── courses/             # Academic modules, timetables, and teacher assignments
-├── enrollments/         # Student class registration and course transfers
-├── expenses/            # Corporate outgoings and cash flow category tracking
-├── income/              # Miscellaneous revenue tracking
-├── inventory/           # Material supplies, vendor purchasing, and sales management
-├── roles/               # RbAC framework (Permissions, custom access levels)
-├── salaries/            # Complex staff contracts, session-rates, and monthly payrolls
-├── sessions/            # Live classroom tracking and holiday schedule rules
-├── students/            # Student profiles and guardian metadata CRM
-├── users/               # Authentication credentials and user settings management
-└── shared/              # Reusable Value Objects (Money, Description) & Security filters
-
----
-
 ## 🛠️ Architecture & Tech Stack
 
 - **Framework:** Spring Boot (Data JPA, Security)
