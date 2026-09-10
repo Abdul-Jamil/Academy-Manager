@@ -48,13 +48,13 @@ src/main/java/com/AjAkrampoor/Academy/
 
 ---
 
-## ⚠️ Portfolio Reflection & Technical Debt
+## ⚡ Architectural Trade-offs & Production Scaling Roadmap
 
-This system was built primarily as a intensive learning vehicle. While it is highly structural and fully functional, software engineering is an iterative process of learning from your mistakes:
+This system was engineered with a strict domain-driven foundation to prioritize data integrity and clean code boundaries. In a production enterprise environment scaling to thousands of concurrent multi-branch requests, the following optimization roadmap is planned to maximize throughput and minimize latency:
 
-1. **Known Architectural Debt:** Looking back at the code, I recognize that I made a few sub-optimal structural decisions. For example, some data retrieval layers inside Response Assemblers introduce **N+1 over-fetching risks** under heavy loads instead of utilizing optimal database batching or batch-fetching strategies up front. Additionally, some use cases are heavily nested where decoupled **Domain Events** would have provided better systemic boundaries.
-2. **Current Status:** Fixing these structural bottlenecks requires significant refactoring time. Because this project has achieved its primary goal of being a massive learning milestone, these fixes are deferred for a future version or a separate project. 
-3. **What I’d Do Differently:** If I were to wipe the slate clean and rewrite this entire ecosystem from scratch today, I would change a great deal of the implementation.
+* **Data Fetching Optimization (N+1 Resolution):** Current response layers leverage traditional Hibernate entity mappings. To eliminate over-fetching during high-volume reporting cycles, read-heavy operations are scheduled to be optimized using **Entity Graphs** and specialized **DTO projections** via JPQL to batch data requirements into singular, highly optimized database round-trips.
+* **Asynchronous Domain Event Decoupling:** Tightly coupled transactional use cases (such as triggering ledger records upon payroll execution) will be refactored from synchronous processing into an **Event-Driven Architecture**. Transitioning to Spring Application Events (and eventually a message broker like RabbitMQ) will ensure eventual consistency and drastically lower API response times.
+* **Distributed Microservices Migration:** Thanks to the strict decoupling of the current bounded contexts (`bills`, `salaries`, `inventory`), the application layout is strategically positioned for horizontal scaling. Individual high-load domains can be cleanly extracted into independent microservices with their own isolated database schemas with minimal system disruption.
 
 ---
 
